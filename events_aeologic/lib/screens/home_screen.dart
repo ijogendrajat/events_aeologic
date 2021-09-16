@@ -2,6 +2,7 @@ import 'package:events_aeologic/screens/map_screen.dart';
 import 'package:events_aeologic/screens/profile_screen.dart';
 import 'package:events_aeologic/screens/saved_screen.dart';
 import 'package:events_aeologic/widgets/home_one.dart';
+import 'package:events_aeologic/widgets/home_three.dart';
 import 'package:events_aeologic/widgets/home_two.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             color: Colors.black,
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue[050],
         title: Text(
           "Events",
           style: TextStyle(color: Colors.black),
@@ -54,6 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SafeArea(
         child: Container(
+          padding: EdgeInsets.all(10),
+          color: Colors.blue[050],
           // width: ,
           // height: ,
           child: Column(
@@ -70,6 +73,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
               UpcomingEventsCard(),
+              SizedBox(
+                height: 5,
+              ),
               Row(
                 children: [
                   //event card come here
@@ -79,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 "Recommended for you",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
+              RecommendedCard(),
               Row(),
             ],
           ),
@@ -95,24 +102,32 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
-        notchMargin: 10,
-        child: Container(
-          height: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: () {},
-                    child: Icon(Icons.add),
-                  )
-                ],
-              ),
-            ],
-          ),
+        elevation: 50,
+        notchMargin: 5,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            MaterialButton(
+              onPressed: () {},
+              child: Icon(Icons.home),
+            ),
+            MaterialButton(
+              onPressed: () {},
+              child: Icon(Icons.map),
+            ),
+            SizedBox(
+              width: 50,
+            ),
+            MaterialButton(
+              onPressed: () {},
+              child: Icon(Icons.bookmark),
+            ),
+            MaterialButton(
+              onPressed: () {},
+              child: Icon(Icons.person),
+            ),
+          ],
         ),
       ),
     );

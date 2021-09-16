@@ -1,4 +1,5 @@
 import 'package:events_aeologic/screens/home_screen.dart';
+import 'package:events_aeologic/screens/map_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Events",
       home: HomeScreen(),
+      // home: MapScreen(),
     );
   }
 }
