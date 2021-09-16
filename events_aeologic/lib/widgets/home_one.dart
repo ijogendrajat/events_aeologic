@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class IconCard extends StatefulWidget {
-  const IconCard({Key? key}) : super(key: key);
+  // const IconCard({Key? key}) : super(key: key);
+  final IconData icon;
+  final String eventType;
+  final Color color;
+
+  IconCard(this.icon, this.eventType, this.color);
 
   @override
   _IconCardState createState() => _IconCardState();

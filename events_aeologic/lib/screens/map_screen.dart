@@ -1,4 +1,5 @@
 import 'package:events_aeologic/widgets/map_one.dart';
+import 'package:events_aeologic/widgets/map_two.dart';
 import 'package:flutter/material.dart';
 
 class MapScreen extends StatefulWidget {
@@ -29,6 +30,11 @@ class _MapScreenState extends State<MapScreen> {
                 top: 40,
                 left: 35,
                 child: DistanceTopBar(),
+              ),
+              Positioned(
+                bottom: 100,
+                left: 30,
+                child: MapBottomCard(),
               ),
             ],
           ),

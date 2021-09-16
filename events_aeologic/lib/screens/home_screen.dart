@@ -57,15 +57,15 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           padding: EdgeInsets.all(10),
           color: Colors.blue[050],
-          // width: ,
-          // height: ,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  IconCard(),
+                  IconCard(Icons.ac_unit, "Something", Colors.black),
                 ],
               ),
               Text(
@@ -113,7 +113,14 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Icon(Icons.home),
             ),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MapScreen(),
+                  ),
+                );
+              },
               child: Icon(Icons.map),
             ),
             SizedBox(
