@@ -1,13 +1,13 @@
+import 'package:events_aeologic/widgets/map_three.dart';
 import 'package:flutter/material.dart';
 
-class MapBottomCard extends StatefulWidget {
-  const MapBottomCard({Key? key}) : super(key: key);
+class MapBottomCard extends StatelessWidget {
+  final Color mapColor;
+  final String mapFest;
+  final String mapDistance;
 
-  @override
-  _MapBottomCardState createState() => _MapBottomCardState();
-}
+  MapBottomCard(this.mapColor, this.mapFest, this.mapDistance);
 
-class _MapBottomCardState extends State<MapBottomCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,13 +18,14 @@ class _MapBottomCardState extends State<MapBottomCard> {
         borderRadius: BorderRadius.all(Radius.circular(2)),
       ),
       child: Stack(
-        clipBehavior: Clip.none,
+        // clipBehavior: Clip.none,
         children: [
+          EventDots(mapColor),
           Positioned(
             right: 15,
             top: 15,
             child: Text(
-              "10km",
+              mapDistance,
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -34,7 +35,7 @@ class _MapBottomCardState extends State<MapBottomCard> {
             left: 20,
             top: 40,
             child: Text(
-              "Fall Festival",
+              mapFest,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
@@ -48,8 +49,7 @@ class _MapBottomCardState extends State<MapBottomCard> {
                   height: 40,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'https://images.unsplash.com/photo-1520466809213-7b9a56adcd45?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGdpcmwlMjB0cmF2ZWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'),
+                      image: NetworkImage('https://bit.ly/3tKHHT7'),
                       fit: BoxFit.fitWidth,
                     ),
                     color: Colors.black,
@@ -65,8 +65,7 @@ class _MapBottomCardState extends State<MapBottomCard> {
                   height: 40,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'https://images.unsplash.com/photo-1616776005756-4dca36124bf9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'),
+                      image: NetworkImage('https://bit.ly/3Epnfw0'),
                       fit: BoxFit.fitWidth,
                     ),
                     color: Colors.black,

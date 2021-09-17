@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
-class IconCard extends StatefulWidget {
-  // const IconCard({Key? key}) : super(key: key);
+class IconCard extends StatelessWidget {
+  IconCard(
+    this.icon,
+    this.eventType,
+    this.color,
+  );
   final IconData icon;
   final String eventType;
   final Color color;
 
-  IconCard(this.icon, this.eventType, this.color);
-
-  @override
-  _IconCardState createState() => _IconCardState();
-}
-
-class _IconCardState extends State<IconCard> {
   @override
   Widget build(BuildContext context) {
+    final lightColor = lighten(color);
     return Container(
+      width: 100,
+      height: 56,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Card(
             elevation: 8,
@@ -26,29 +28,54 @@ class _IconCardState extends State<IconCard> {
             child: Container(
               width: 40,
               height: 40,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: Colors.pink[100]),
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: lightColor),
               child: Icon(
-                Icons.movie_creation_outlined,
-                color: Colors.pink,
+                icon,
+                color: color,
               ),
             ),
-            shadowColor: Colors.pink,
+            shadowColor: color,
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                "Movies",
+                eventType,
                 style: TextStyle(color: Colors.black, fontSize: 16),
               ),
               Text(
                 "22 items",
-                style: TextStyle(color: Colors.pink, fontSize: 10),
+                style: TextStyle(color: Colors.blue, fontSize: 11),
               ),
+              SizedBox(
+                height: 1,
+              )
             ],
           )
         ],
       ),
     );
   }
+}
+
+//light color
+
+Color darken(Color color, [double amount = .1]) {
+  assert(amount >= 0 && amount <= 1);
+
+  final hsl = HSLColor.fromColor(color);
+  final hslDark = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
+
+  return hslDark.toColor();
+}
+
+Color lighten(Color color, [double amount = .4]) {
+  assert(amount >= 0 && amount <= 1);
+
+  final hsl = HSLColor.fromColor(color);
+  final hslLight = hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
+
+  return hslLight.toColor();
 }

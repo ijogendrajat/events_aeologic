@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
 
-class DistanceTopBar extends StatefulWidget {
-  const DistanceTopBar({Key? key}) : super(key: key);
-
-  @override
-  _DistanceTopBarState createState() => _DistanceTopBarState();
-}
-
-class _DistanceTopBarState extends State<DistanceTopBar> {
+class DistanceTopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var _height = MediaQuery.of(context).size.height;
     var _width = MediaQuery.of(context).size.width;
-
     return Container(
       height: 55,
       width: _width / 1.2,
@@ -26,16 +17,20 @@ class _DistanceTopBarState extends State<DistanceTopBar> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            "4km",
-            style: TextStyle(
-              fontSize: 15,
+          Card(
+            child: Text(
+              "4km",
+              style: TextStyle(
+                fontSize: 15,
+              ),
             ),
           ),
-          Text(
-            "20km",
-            style: TextStyle(
-              fontSize: 15,
+          Card(
+            child: Text(
+              "20km",
+              style: TextStyle(
+                fontSize: 15,
+              ),
             ),
           ),
           Container(

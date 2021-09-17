@@ -1,6 +1,5 @@
 import 'package:events_aeologic/screens/map_screen.dart';
-import 'package:events_aeologic/screens/profile_screen.dart';
-import 'package:events_aeologic/screens/saved_screen.dart';
+import 'package:events_aeologic/widgets/hero.dart';
 import 'package:events_aeologic/widgets/home_one.dart';
 import 'package:events_aeologic/widgets/home_three.dart';
 import 'package:events_aeologic/widgets/home_two.dart';
@@ -14,14 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentTab = 0;
-  final List screens = [
-    HomeScreen(),
-    MapScreen(),
-    SavedScreen(),
-    ProfileScreen(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,40 +51,90 @@ class _HomeScreenState extends State<HomeScreen> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  IconCard(Icons.ac_unit, "Something", Colors.black),
-                ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    IconCard(Icons.movie, "Movies", Colors.purple),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    IconCard(Icons.cloud_upload, "Party", Colors.blue),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    IconCard(Icons.food_bank, "Sports", Colors.orange),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    IconCard(Icons.coffee, "Food", Colors.green),
+                  ],
+                ),
               ),
               Text(
                 "Upcoming events",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
-              UpcomingEventsCard(),
-              SizedBox(
-                height: 5,
-              ),
-              Row(
-                children: [
-                  //event card come here
-                ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    UpcomingEventsCard("Fall Festival",
+                        "New York : 12 Nov 2018", 'https://bit.ly/3zh32Vh'),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    UpcomingEventsCard("Summer Festival",
+                        "Ellicottville: 12 Nov 2018", 'https://bit.ly/39c8VZ4'),
+                    //event card come here
+                  ],
+                ),
               ),
               Text(
                 "Recommended for you",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
-              RecommendedCard(),
-              Row(),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    RecommendedCard("Harvest Fest", "Hood River", "Food",
+                        Colors.green, "2km", "https://bit.ly/2Xk7iWK"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    RecommendedCard("Oktober Fest", "Wine Wood", "Party",
+                        Colors.blue, "10km", "https://bit.ly/3zgvkPQ"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    RecommendedCard("Ice Sky Fest", "GT Road", "Sports",
+                        Colors.orange, "8km", "https://bit.ly/3zi2G0L"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    RecommendedCard("Cinema Fest", "VineWood", "Movies",
+                        Colors.purple, "32km", "https://bit.ly/3lya0jW"),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepOrangeAccent,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailsHero(),
+            ),
+          );
+        },
         child: Icon(
           Icons.add,
           color: Colors.white,

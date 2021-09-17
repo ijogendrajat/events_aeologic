@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
-class RecommendedCard extends StatefulWidget {
-  const RecommendedCard({Key? key}) : super(key: key);
+class RecommendedCard extends StatelessWidget {
+  final String festName;
+  final String festTown;
+  final String festCate;
+  final String festDistance;
+  final Color festColor;
+  final String festUrl;
 
-  @override
-  _RecommendedCardState createState() => _RecommendedCardState();
-}
+  RecommendedCard(this.festName, this.festTown, this.festCate, this.festColor,
+      this.festDistance, this.festUrl);
 
-class _RecommendedCardState extends State<RecommendedCard> {
   @override
   Widget build(BuildContext context) {
+    final festliteColor = lighten(festColor);
     return Container(
       height: 250,
       width: 150,
@@ -28,7 +32,9 @@ class _RecommendedCardState extends State<RecommendedCard> {
               height: 130,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/fall_Image.jpg")),
+                  image: NetworkImage(festUrl),
+                  fit: BoxFit.fitHeight,
+                ),
                 color: Colors.green,
                 borderRadius: BorderRadius.all(Radius.circular(2)),
               ),
@@ -38,7 +44,7 @@ class _RecommendedCardState extends State<RecommendedCard> {
             left: 10,
             top: 160,
             child: Text(
-              "Harvest Fest",
+              festName,
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
@@ -47,14 +53,17 @@ class _RecommendedCardState extends State<RecommendedCard> {
             top: 145,
             child: IconButton(
               onPressed: () {},
-              icon: Icon(Icons.favorite_border_outlined),
+              icon: Icon(
+                Icons.favorite_border_outlined,
+                color: festColor,
+              ),
             ),
           ),
           Positioned(
             top: 190,
             left: 10,
             child: Text(
-              "Hood River",
+              festTown,
               style: TextStyle(
                 fontSize: 14,
               ),
@@ -68,12 +77,12 @@ class _RecommendedCardState extends State<RecommendedCard> {
                 width: 80,
                 child: Center(
                   child: Text(
-                    "Food",
-                    style: TextStyle(fontSize: 15, color: Colors.green),
+                    festCate,
+                    style: TextStyle(fontSize: 15, color: festColor),
                   ),
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.green[100],
+                  color: festliteColor,
                   borderRadius: BorderRadius.all(Radius.circular(2)),
                 ),
               )),
@@ -81,7 +90,7 @@ class _RecommendedCardState extends State<RecommendedCard> {
             right: 10,
             bottom: 12,
             child: Text(
-              "2km",
+              festDistance,
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -91,4 +100,13 @@ class _RecommendedCardState extends State<RecommendedCard> {
       ),
     );
   }
+}
+
+Color lighten(Color color, [double amount = .4]) {
+  assert(amount >= 0 && amount <= 1);
+
+  final hsl = HSLColor.fromColor(color);
+  final hslLight = hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
+
+  return hslLight.toColor();
 }
